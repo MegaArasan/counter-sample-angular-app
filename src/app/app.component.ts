@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'counter';
+  @Input() count:number=0;
+  @Output() public oddArray:Array<number>=[];
+  @Output() public evenArray:Array<number>=[];
+  send(event: any){
+    this.count=event;
+    if(this.count%2==0){
+      this.evenArray.push(this.count)
+    }else{
+      this.oddArray.push(this.count)
+    }
+  }
 }
